@@ -1,20 +1,23 @@
 const responsive = {
-  superLargeDesktop: {
+  superLarge: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
-  desktop: {
+  large: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
+    slidesToSlide: 3,
   },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
+  medium: {
+    breakpoint: { max: 768, min: 464 },
     items: 2,
+    slidesToSlide: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
+    slidesToSlide: 1,
   },
 };
 
@@ -56,4 +59,27 @@ const items = [
   },
 ];
 
-export { responsive, items };
+export enum TempUnit {
+  CELCIUS,
+  FAHRENHEIT,
+}
+
+function kelvinToCelcius(num: number) {
+  return Math.round(num - 273.15);
+}
+
+function celciusToFahrenheit(c: number) {
+  return Math.round(c * (9 / 5) + 32);
+}
+
+function fahrenheitToCelcius(f: number) {
+  return Math.round(((f - 32) * 5) / 9);
+}
+
+export {
+  responsive,
+  items,
+  kelvinToCelcius,
+  celciusToFahrenheit,
+  fahrenheitToCelcius,
+};

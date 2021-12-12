@@ -1,6 +1,6 @@
-export interface WeatherData {
-  day: string;
-  temp: {
+export interface WeatherDataType {
+  day: any;
+  temp?: {
     temp_min: number;
     temp_max: number;
   };
@@ -8,4 +8,5 @@ export interface WeatherData {
     id: number;
     main: string;
   };
+  temperatures?: number[];
 }
