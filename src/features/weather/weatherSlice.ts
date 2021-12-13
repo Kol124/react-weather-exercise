@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { TempUnit } from "../../utils";
 import { WeatherDataType } from "../../interfaces/index";
 import { fetchWeatherData, ParseWeatherData } from "../../api/index";
 
-// const API_URL = process.env.REACT_APP_WEATHER_API_KEY;
-// const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-
 export interface WeatherState {
-  data: WeatherDataType[];
+  weatherData: WeatherDataType[];
   isLoading: boolean;
+  tempUnit: TempUnit;
 }
 
 const initialState: WeatherState = {
-  data: [],
+  weatherData: [],
   isLoading: false,
+  tempUnit: TempUnit.CELCIUS,
 };
 
 export const fetchWeather = createAsyncThunk(
@@ -39,13 +39,19 @@ export const weatherSlice = createSlice({
     setIsLoading: (state: WeatherState, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
+    changeTempUnit: (state: WeatherState) => {
+      state.tempUnit =
+        state.tempUnit === TempUnit.CELCIUS
+          ? TempUnit.FAHRENHEIT
+          : TempUnit.CELCIUS;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchWeather.fulfilled, (state, action) => {
         const res = ParseWeatherData(action.payload);
-        state.data = res.forecastData;
-        console.log(state.data);
+        state.weatherData = res.forecastData;
+        console.log(state.weatherData);
       })
       .addCase(fetchWeather.rejected, (state, action) => {
         console.log("Error: FetchWeather Reducer Action");
@@ -53,6 +59,9 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { setIsLoading } = weatherSlice.actions;
-// export const selectWeather = (state: RootState) => state.weather.data;
+export const { setIsLoading, changeTempUnit } = weatherSlice.actions;
+export const selectWeatherData = (state: RootState) =>
+  state.weather.weatherData;
+export const selectIsLoading = (state: RootState) => state.weather.isLoading;
+export const selectTempUnit = (state: RootState) => state.weather.tempUnit;
 export default weatherSlice.reducer;

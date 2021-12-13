@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
 import Temperature from "./Temperature";
 import styled from "@emotion/styled";
 import WeatherIcon from "./WeatherIcon";
@@ -9,14 +8,12 @@ import WeatherIcon from "./WeatherIcon";
 interface data {
   day: string;
   weatherId: number;
-  high: number;
   low: number;
+  high: number;
   main: string;
 }
 
 export const WeatherCard: React.FC<data> = (props) => {
-  const dispatch = useAppDispatch();
-
   return (
     <StyledCard>
       <Typography
@@ -43,10 +40,12 @@ export const WeatherCard: React.FC<data> = (props) => {
 const StyledCard = styled(Card)`
   padding: 10px 16px;
   box-shadow: none;
-  margin: 0 1rem;
+  margin: 1rem;
   opacity: 0.75;
   border: none;
   display: flex;
+  cursor: pointer;
+  position: relative;
   align-items: center;
   flex-direction: column;
   background-color: inherit;
