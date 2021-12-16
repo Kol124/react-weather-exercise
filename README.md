@@ -1,19 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## React Weather App Exercise
 
-## Available Scripts
+Run dev server:
 
-In the project directory, you can run:
+```bash
+npm start
+```
 
-### `yarn start`
+This project was bootstrapped with using the TypeScript React [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Technologies
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### UI
 
-## Learn More
+- Material UI
+- React Slick
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### State
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Redux & Redux Toolkit
+
+#### Testing
+
+- Jest
+- Enzyme
