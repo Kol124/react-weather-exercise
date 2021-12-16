@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "@mui/material";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Temperature from "./Temperature";
 import styled from "@emotion/styled";
@@ -8,8 +9,7 @@ import WeatherIcon from "./WeatherIcon";
 interface data {
   day: string;
   weatherId: number;
-  low: number;
-  high: number;
+  temp: number;
   main: string;
 }
 
@@ -24,15 +24,21 @@ export const WeatherCard: React.FC<data> = (props) => {
       >
         {props.day}
       </Typography>
-      <WeatherIcon code={props.weatherId} />
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          my: "1rem",
+        }}
+      >
+        <span>
+          <Temperature value={props.temp} />
+          <sup>&deg;</sup>
+        </span>
+        <WeatherIcon code={props.weatherId} />
+      </Box>
       <Typography fontWeight="bold">{props.main}</Typography>
-      <span>
-        <Temperature value={props.high} />
-        <sup>&deg;</sup>
-        <small>/</small>
-        <Temperature value={props.low} />
-        <sup>&deg;</sup>
-      </span>
     </StyledCard>
   );
 };
@@ -57,5 +63,6 @@ const StyledCard = styled(Card)`
 
   span {
     font-weight: bold;
+    margin-right: 1rem;
   }
 `;

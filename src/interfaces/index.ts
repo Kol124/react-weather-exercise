@@ -1,9 +1,6 @@
 export interface WeatherDataType {
   day: any;
-  temp: {
-    temp_min: number;
-    temp_max: number;
-  };
+  avg_temp: number;
   weather: {
     id: number;
     main: string;

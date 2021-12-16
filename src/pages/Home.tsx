@@ -1,21 +1,23 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import bgImage from "../assets/bg.svg";
 import { Box } from "@mui/material";
 import styled from "@emotion/styled";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import AutorenewIcon from "@material-ui/icons/Autorenew";
 import {
   fetchWeather,
   changeTempUnit,
   selectIsLoading,
   selectWeatherData,
 } from "../features/weather/weatherSlice";
-import { BarChart } from "../components/BarChart";
 import { UnitSwitch } from "../components/Switch";
 import { Progress } from "../components/Progress";
 import { WeatherCard } from "../components/WeatherCard";
 import { WeatherCarousel } from "../components/WeatherCarousel";
+import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
   const city: string = "Munich,de";
@@ -56,15 +58,18 @@ const Home = () => {
                   <WeatherCard
                     key={i}
                     day={item.day}
-                    high={item.temp.temp_max}
-                    low={item.temp.temp_min}
+                    temp={item.avg_temp}
                     weatherId={item.weather.id}
                     main={item.weather.main}
                   />
                 ))}
               </WeatherCarousel>
             </BoxSmall>
-            <BarChart show={true} />
+            <Stack alignItems="center">
+              <Button onClick={() => dispatch(fetchWeather(city))}>
+                <AutorenewIcon fontSize="large" />
+              </Button>
+            </Stack>
           </Container>
         </BoxLarge>
       )}
@@ -85,8 +90,8 @@ const BoxLarge = styled(Box)`
 const BoxSmall = styled(Box)`
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
   background: rgba(255, 255, 255, 0.75);
-  padding: 10px;
   margin: 10px 10px 30px;
+  padding: 10px;
 `;
 
 export default Home;
