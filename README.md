@@ -1,5 +1,7 @@
 ## React Weather App Exercise
 
+<a href="https://react-weather-exercise.netlify.app/"><h3>Live</a>
+
 Run dev server:
 
 ```bash
