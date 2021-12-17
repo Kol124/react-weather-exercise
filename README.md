@@ -1,14 +1,12 @@
 ## React Weather App Exercise
 
-<a href="https://react-weather-exercise.netlify.app/"><h3>Live</a>
+<a href="https://react-weather-exercise.netlify.app/"><h3>Live</h3></a>
 
 Run dev server:
 
 ```bash
 npm start
 ```
-
-This project was bootstrapped with using the TypeScript React [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ### Technologies
 
@@ -25,3 +23,5 @@ This project was bootstrapped with using the TypeScript React [Redux](https://re
 
 - Jest
 - Enzyme
+
+This project was bootstrapped with using the TypeScript React [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
