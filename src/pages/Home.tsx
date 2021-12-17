@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import AutorenewIcon from "@material-ui/icons/Autorenew";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
 import {
   fetchWeather,
   changeTempUnit,
@@ -17,13 +17,13 @@ import { UnitSwitch } from "../components/Switch";
 import { Progress } from "../components/Progress";
 import { WeatherCard } from "../components/WeatherCard";
 import { WeatherCarousel } from "../components/WeatherCarousel";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 
 const Home = () => {
   const city: string = "Munich,de";
-  const dispatch = useDispatch();
-  const loading = useSelector(selectIsLoading);
-  const weather = useSelector(selectWeatherData);
+  const dispatch = useAppDispatch();
+  const loading = useAppSelector(selectIsLoading);
+  const weather = useAppSelector(selectWeatherData);
 
   useEffect(() => {
     console.log();

@@ -30,7 +30,7 @@ export const ParseWeatherData = (res: any) => {
 
   keys.forEach((i: any, index: number) => {
     forecastData.push({
-      day: nextFiveDays[index],
+      day: `${i} ${nextFiveDays[index]}`,
       avg_temp: kelvinToCelcius(
         (list[i][index].main.temp_max + list[i][index].main.temp_min) / 2
       ),

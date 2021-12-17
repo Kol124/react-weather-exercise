@@ -54,7 +54,8 @@ export const weatherSlice = createSlice({
         console.log(state.weatherData);
       })
       .addCase(fetchWeather.rejected, (state, action) => {
-        console.log("Error: FetchWeather Reducer Action");
+        state.isLoading = false;
+        console.log("Error: FetchWeather Failed");
       });
   },
 });

@@ -1,6 +1,6 @@
 import React from "react";
-import { Card } from "@mui/material";
 import Box from "@mui/material/Box";
+import { Card } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Temperature from "./Temperature";
 import styled from "@emotion/styled";
@@ -16,13 +16,8 @@ interface data {
 export const WeatherCard: React.FC<data> = (props) => {
   return (
     <StyledCard>
-      <Typography
-        variant="h6"
-        textAlign="center"
-        fontFamily="inherit"
-        color="#38c8e6"
-      >
-        {props.day}
+      <Typography color="#4a6fa1" fontWeight="bold">
+        {props.main}
       </Typography>
       <Box
         sx={{
@@ -38,7 +33,14 @@ export const WeatherCard: React.FC<data> = (props) => {
         </span>
         <WeatherIcon code={props.weatherId} />
       </Box>
-      <Typography fontWeight="bold">{props.main}</Typography>
+      <Typography
+        variant="h6"
+        textAlign="center"
+        fontFamily="inherit"
+        color="#38c8e6"
+      >
+        {props.day}
+      </Typography>
     </StyledCard>
   );
 };
@@ -46,11 +48,10 @@ export const WeatherCard: React.FC<data> = (props) => {
 const StyledCard = styled(Card)`
   padding: 10px 16px;
   box-shadow: none;
-  margin: 1rem;
   opacity: 0.75;
+  margin: 1rem;
   border: none;
   display: flex;
-  cursor: pointer;
   position: relative;
   align-items: center;
   flex-direction: column;
@@ -62,7 +63,8 @@ const StyledCard = styled(Card)`
   }
 
   span {
-    font-weight: bold;
+    color: #555;
+    font-weight: 800;
     margin-right: 1rem;
   }
 `;
